@@ -1,5 +1,5 @@
 export default class Currency {
-  constructor(name, code) {
+  constructor(code, name) {
     this.code = code;
     this.name = name;
   }
