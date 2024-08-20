@@ -1,36 +1,33 @@
 #!/usr/bin/node
 const fs = require('fs');
 
-function countStudents(db){
-    try {
-        const data = fs.readFileSync(db, 'utf8');
-        const lines = data.split('\n')
+function countStudents(db) {
+  try {
+    const data = fs.readFileSync(db, 'utf8');
+    const lines = data.split('\n');
 
-        const header = lines[0].split(',');
-        const students = lines.slice(1);
+    const students = lines.slice(1);
 
-        const fields = {};
+    const fields = {};
 
-        students.forEach((student) => {
-            const [firstname, lastname, age, field] = student.split(',');
+    students.forEach((student) => {
+      const [firstname, , , field] = student.split(',');
 
-            if (!fields[field]) {
-                fields[field] = [];
-            }
-            fields[field].push(firstname);
-        });
+      if (!fields[field]) {
+        fields[field] = [];
+      }
+      fields[field].push(firstname);
+    });
 
-        const totalStudents = students.length;
-        console.log(`Number of students: ${totalStudents}`);
+    const totalStudents = students.length;
+    console.log(`Number of students: ${totalStudents}`);
 
-        for (const [field, names] of Object.entries(fields)) {
-            console.log(`Number of students in ${field}: ${names.length}. List: ${names.join(', ')}`);
-        }
-
+    for (const [field, names] of Object.entries(fields)) {
+      console.log(`Number of students in ${field}: ${names.length}. List: ${names.join(', ')}`);
     }
-    catch (err){
-        throw new Error('Cannot load the database');
-    }
+  } catch (err) {
+    throw new Error('Cannot load the database');
+  }
 }
 
 module.exports = countStudents;

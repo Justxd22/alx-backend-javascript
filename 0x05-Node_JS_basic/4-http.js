@@ -3,7 +3,6 @@ const http = require('http');
 
 const app = http.createServer();
 
-
 app.on('request', (_, res) => {
   const responseText = 'Hello Holberton School!';
 
