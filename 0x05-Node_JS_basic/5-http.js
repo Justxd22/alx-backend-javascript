@@ -44,7 +44,7 @@ app.on('request', (req, res) => {
   } else if (req.url === '/students') {
     const filePath = process.argv[2];
     if (!filePath) {
-      res.writeHead(500, { 'Content-Type': 'text/plain' });
+      res.writeHead(200, { 'Content-Type': 'text/plain' });
       res.end('Database file not specified.');
       return;
     }
