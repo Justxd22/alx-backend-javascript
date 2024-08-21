@@ -1,4 +1,3 @@
-#!/usr/bin/node
 const fs = require('fs').promises;
 
 async function countStudents(db) {
