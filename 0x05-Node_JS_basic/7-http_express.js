@@ -22,6 +22,7 @@ async function countStudents(db) {
     });
 
     const mess = [];
+    mess.push('This is the list of our students');
     mess.push(`Number of students: ${students.length}`);
 
     for (const [field, names] of Object.entries(fields)) {
