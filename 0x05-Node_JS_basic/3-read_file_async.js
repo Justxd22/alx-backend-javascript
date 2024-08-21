@@ -2,6 +2,10 @@ const fs = require('fs').promises;
 
 const countStudents = async (db) => {
   try {
+    const stats = await fs.stat(db);
+    if (!stats.isFile()) {
+      throw new Error('Cannot load the database');
+    }
     const data = await fs.readFile(db, 'utf8');
     const lines = data.split('\n');
 
